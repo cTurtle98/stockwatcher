@@ -9,7 +9,7 @@ from selenium import webdriver
 
 driver = webdriver.Firefox()
 
-def main(url):
+def scraper(url):
     """
     finds stock status for url
     return 1 = in stock
