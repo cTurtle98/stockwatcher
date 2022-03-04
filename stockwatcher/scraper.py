@@ -31,10 +31,10 @@ def store_ui_com(url):
     driver.get(url)
 
     # find the add to cart button div
-    product_button = driver.find_element_by_class_name("comProduct_button")
-    if "Add to Cart" in product_button:
+    product_button = driver.find_element_by_css_selector("#bundleApp > div.bundleLogic.add16bottom.add16top > div.one-whole.flex.flex-wrap > div > div.flex.flex-grow-1 > div.comProduct__button.flex-grow-1.add8left")
+    if "Add to Cart" in product_button.text:
         return("1")
-    if "Sold Out" in product_button:
+    if "Sold Out" in product_button.text:
         return("0")
     
     return("-1")
