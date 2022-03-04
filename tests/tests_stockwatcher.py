@@ -8,6 +8,4 @@ tests to verify stockwatcher is working as expected
 
 import stockwatcher
 
-testurl = input()
-
-print(stockwatcher.scraper(testurl))
+test_url_store_ui_com_in_stock = "https://store.ui.com/collections/unifi-protect/products/unifi-protect-g4-ptz"
