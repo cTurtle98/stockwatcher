@@ -6,8 +6,8 @@ copyright Ciaran Farley 2022
 tests to verify stockwatcher is working as expected
 """
 
-import stockwatcher
+from ..stockwatcher import stockwatcher
 
 test_url_store_ui_com_in_stock = "https://store.ui.com/collections/unifi-protect/products/unifi-protect-g4-ptz"
 
-stockwatcher.scraper.main(test_url_store_ui_com_in_stock)
+stockwatcher.scraper.scrape(test_url_store_ui_com_in_stock)
