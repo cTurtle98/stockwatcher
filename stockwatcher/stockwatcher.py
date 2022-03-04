@@ -3,5 +3,4 @@
 stockwatcher
 copyright Ciaran Farley 2022
 
-
 """
