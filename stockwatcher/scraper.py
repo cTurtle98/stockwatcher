@@ -6,8 +6,13 @@ functions for scraping specific websites
 """
 
 from selenium import webdriver
+import atexit
 
 driver = webdriver.Firefox()
+
+def exit_handler():
+    driver.close()
+atexit.register(exit_handler)
 
 def scrape(url):
     """
@@ -30,11 +35,11 @@ def store_ui_com(url):
     # load the url
     driver.get(url)
 
-    # find the add to cart button div
-    product_button = driver.find_element_by_css_selector("#bundleApp > div.bundleLogic.add16bottom.add16top > div.one-whole.flex.flex-wrap > div > div.flex.flex-grow-1 > div.comProduct__button.flex-grow-1.add8left")
-    if "Add to Cart" in product_button.text:
-        return("1")
-    if "Sold Out" in product_button.text:
-        return("0")
-    
-    return("-1")
+    status = driver.find_element_by_xpath("//meta[@itemprop='availability']").get_attribute("content")
+
+    if "InStock" in status:
+        return(1)
+    elif "OutOfStock"in status:
+        return(0)
+    else:
+        return(-1)
